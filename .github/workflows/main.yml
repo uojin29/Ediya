@@ -1,4 +1,4 @@
-name: millie-front-deploy
+name: ediya-front-deploy
 
 on:
   push:
