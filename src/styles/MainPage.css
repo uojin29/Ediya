@@ -1,0 +1,85 @@
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoImage {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.container .menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Nunito Sans', sans-serif;
+    line-height: 1.7em;
+    font-size: 26px;
+}
+
+.drinkImage {
+    width: 100%;
+    height: auto;
+}
+
+.container .drink {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 60px;
+    font-weight: lighter;
+    line-height: 1.2em;
+}
+
+.container .on {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 60px;
+    font-weight: lighter;
+    line-height: 1.2em;
+}
+
+.location {
+    text-align: right;
+    margin: 0 auto;
+    padding-top: 38px;
+    margin-right: 150px;
+    color: #898989;
+    font-size: 12px;
+}
+
+.block_new {
+    margin-bottom: 60px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.con_align {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+.block_new h3 {
+    width: 100%;
+    margin-bottom: 30px;
+    background: url(../../public/img/menu_line.gif) no-repeat center center;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: #202023;
+}
