@@ -84,11 +84,11 @@ function MainPage() {
         <div className="location">
             HOME  메뉴  음료
         </div>
-        {/* <div>
+        <div>
             <div className="con_align">
                 <h3 className="nunito">추천상품</h3>
             </div>
-        </div> */}
+        </div>
       </div>
       <div>
       {/* <div class="bx-wrapper" style="max-width: 1179px;">
