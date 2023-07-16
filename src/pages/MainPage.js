@@ -85,9 +85,9 @@ function MainPage() {
             HOME  메뉴  음료
         </div>
         <div>
-            <div className="con_align">
+            {/* <div className="con_align">
                 <h3 className="nunito">추천상품</h3>
-            </div>
+            </div> */}
         </div>
       </div>
       <div>
