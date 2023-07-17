@@ -36,39 +36,16 @@ function Drinks() {
                 <Button variant="contained" sx={{background: 'none', boxShadow: 'none', maxHeight: '50px', '&:hover': { background: 'none', boxShadow: 'none' }}}>
                     <img src="https://www.ediya.com/images/common/new_btn_arrow01.gif" alt="left"/>
                 </Button>
-                <Card sx={{ maxWidth: 393, marginRight: '1rem', minWidth: 325, boxShadow: 'none'}}>
-                    <CardMedia
-                        sx={{ height: 0, paddingTop: '100%', width: '100%' }}
-                        image="https://www.ediya.com/files/menu/IMG_1647319867876.png"
-                    />
-                    <CardContent sx={{textAlign: 'center', color: '#464646'}}>
-                        <Typography gutterBottom variant="p" component="div">
-                            HOT 토피넛 라떼
-                        </Typography>
-                    </CardContent>
-                </Card>
-                <Card sx={{ maxWidth: 393, minWidth: 325, boxShadow: 'none'}}>
-                    <CardMedia
-                        sx={{ height: 0, paddingTop: '100%', width: '100%' }}
-                        image="https://www.ediya.com/files/menu/IMG_1647319854660.png"
-                    />
-                    <CardContent sx={{textAlign: 'center', color: '#464646'}}>
-                        <Typography gutterBottom variant="p" component="div">
-                            ICED 토피넛 라떼
-                        </Typography>
-                    </CardContent>
-                </Card>
-                <Card sx={{ maxWidth: 393, minWidth: 325, boxShadow: 'none'}}>
-                    <CardMedia
-                        sx={{ height: 0, paddingTop: '100%', width: '100%' }}
-                        image="https://www.ediya.com/files/menu/IMG_1647322170791.png"
-                    />
-                    <CardContent sx={{textAlign: 'center', color: '#464646'}}>
-                        <Typography gutterBottom variant="p" component="div">
-                            꿀복숭아 플랫치노
-                        </Typography>
-                    </CardContent>
-                </Card>
+                {cardData.slice(0,3).map((card, index) => (
+                    <Card key={index} sx={{ maxWidth: 393, minWidth: 325, boxShadow: 'none', background: 'none', marginRight: '1rem'}}>
+                        <CardMedia sx={{ height: 0, paddingTop: '100%', width: '100%'}} image={card.image} />
+                        <CardContent sx={{ textAlign: 'center', color: '#464646' }} className={'menu_tt'}>
+                            <Typography gutterBottom variant="p" component="div" className={'spans'}>
+                                {card.title}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                ))}
                 <Button variant="contained" sx={{background: 'none', boxShadow: 'none', maxHeight: '50px', '&:hover': { background: 'none', boxShadow: 'none'}}}>
                     <img src="https://www.ediya.com/images/common/new_btn_arrow02.gif" alt="right"/>
                 </Button>

@@ -34,39 +34,16 @@ function Foods() {
                 <Button variant="contained" sx={{background: 'none', boxShadow: 'none', maxHeight: '50px', '&:hover': { background: 'none', boxShadow: 'none' }}}>
                     <img src="https://www.ediya.com/images/common/new_btn_arrow01.gif" alt="left"/>
                 </Button>
-                <Card sx={{ maxWidth: 393, marginRight: '1rem', minWidth: 325, boxShadow: 'none'}}>
-                    <CardMedia
-                        sx={{ height: 0, paddingTop: '100%', width: '100%' }}
-                        image="https://www.ediya.com/files/menu/IMG_1510911706733.png"
-                    />
-                    <CardContent sx={{textAlign: 'center', color: '#464646'}}>
-                        <Typography gutterBottom variant="p" component="div">
-                            허니 카라멜 브레드
-                        </Typography>
-                    </CardContent>
-                </Card>
-                <Card sx={{ maxWidth: 393, minWidth: 325, boxShadow: 'none'}}>
-                    <CardMedia
-                        sx={{ height: 0, paddingTop: '100%', width: '100%' }}
-                        image="https://www.ediya.com/files/menu/IMG_1566779269364.png"
-                    />
-                    <CardContent sx={{textAlign: 'center', color: '#464646'}}>
-                        <Typography gutterBottom variant="p" component="div">
-                            크루아상
-                        </Typography>
-                    </CardContent>
-                </Card>
-                <Card sx={{ maxWidth: 393, minWidth: 325, boxShadow: 'none'}}>
-                    <CardMedia
-                        sx={{ height: 0, paddingTop: '100%', width: '100%' }}
-                        image="	https://www.ediya.com/files/menu/IMG_1688351702650.png"
-                    />
-                    <CardContent sx={{textAlign: 'center', color: '#464646'}}>
-                        <Typography gutterBottom variant="p" component="div">
-                            약과 크림치즈 쿠키
-                        </Typography>
-                    </CardContent>
-                </Card>
+                {cardData.slice(0,3).map((card, index) => (
+                    <Card key={index} sx={{ maxWidth: 393, minWidth: 325, boxShadow: 'none', background: 'none', marginRight: '1rem'}}>
+                        <CardMedia sx={{ height: 0, paddingTop: '100%', width: '100%'}} image={card.image} />
+                        <CardContent sx={{ textAlign: 'center', color: '#464646' }} className={'menu_tt'}>
+                            <Typography gutterBottom variant="p" component="div" className={'spans'}>
+                                {card.title}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                ))}
                 <Button variant="contained" sx={{background: 'none', boxShadow: 'none', maxHeight: '50px', '&:hover': { background: 'none', boxShadow: 'none'}}}>
                     <img src="https://www.ediya.com/images/common/new_btn_arrow02.gif" alt="right"/>
                 </Button>
