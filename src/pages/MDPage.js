@@ -6,6 +6,7 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import { styled } from '@mui/material/styles';
 import { useNavigate } from "react-router-dom";
 import Header from "../component/Header";
+import MDs from "../component/MDs";
 
 const CustomButton = styled(Button)(({ theme }) => ({
   color: '#84847c;',
@@ -81,6 +82,19 @@ function MDPage() {
           </ButtonGroup>
         </Box>
       </div>
+        <div className="block_new">
+            <div className="location">
+                HOME  메뉴  음료
+            </div>
+            <div>
+                <div className="con_align">
+                    <h3 className="nunito">추천상품</h3>
+                </div>
+            </div>
+        </div>
+        <div>
+            <MDs/>
+        </div>
     </div>
   );
 }

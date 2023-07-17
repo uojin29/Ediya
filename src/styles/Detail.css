@@ -1,0 +1,16 @@
+a.gift_btn {
+    display: block;
+    width: 70px;
+    margin: 10px auto 0;
+    background: #243c84;
+    color: #FFF;
+    font-weight: 500;
+}
+.menu_tt {
+    height: 80px;
+}
+.spans {
+    display: inline-block;
+    height: 35px;
+    line-height: 1.2em;
+}
