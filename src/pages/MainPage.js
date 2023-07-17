@@ -52,21 +52,8 @@ function MainPage() {
         <p className="menu"> ALWAYS BESIDE YOU,
           <strong>EDIYA COFFEE</strong>
         </p>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            '& > *': {
-              m: 1,
-              position: 'absolute',
-              top: '75%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              textAlign: 'center',
-            },
-          }}
-        >
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center',
+            '& > *': { m: 1, position: 'absolute', top: '75%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center',},}}>
           <ButtonGroup size="large" aria-label="large button group">
             {buttons.map((button, index) => (
               React.cloneElement(button, {
