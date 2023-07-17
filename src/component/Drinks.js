@@ -8,6 +8,7 @@ function Drinks() {
             image: 'https://www.ediya.com/files/menu/IMG_1671587873712.png',
             title: '(L) ICED 넛츠 크림 라떼',
             giftLink: 'https://brand.naver.com/ediyagift/products/7801014621',
+            detail: '부드러운 크림과 에스프레소, 너티 플레이버가 어우러져 만들어진 완벽한 한 잔의 라떼'
         },
         {
             image: 'https://www.ediya.com/files/menu/IMG_1647320234464.png',
