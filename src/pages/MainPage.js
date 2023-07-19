@@ -7,6 +7,7 @@ import { styled } from '@mui/material/styles';
 import { useNavigate } from "react-router-dom";
 import Header from "../component/Header";
 import Drinks from "../component/Drinks";
+import Footer from "../component/Footer";
 
 const CustomButton = styled(Button)(({ theme }) => ({
   color: '#84847c;',
@@ -81,6 +82,7 @@ function MainPage() {
       <div>
         <Drinks/>
       </div>
+        <Footer/>
     </div>
   );
 }

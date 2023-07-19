@@ -5,16 +5,18 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 
-function CardSection({ setCurrentIndex, cardData, visibleCards }) {
+function CardSection({ cardData, visibleCards }) {
+    const [currentIndex, setCurrentIndex] = useState(0);
     const handleLeftClick = () => {
         setCurrentIndex((prevIndex) =>
-            prevIndex === 0 ? cardData.length - 3 : prevIndex - 1
+            prevIndex === 0 ? visibleCards.length - 3 : prevIndex - 1
         );
+        console.log(visibleCards.length)
     };
 
     const handleRightClick = () => {
         setCurrentIndex((prevIndex) =>
-            prevIndex === cardData.length - 3 ? 0 : prevIndex + 1
+            prevIndex === visibleCards.length - 3 ? 0 : prevIndex + 1
         );
     };
 
@@ -27,14 +29,13 @@ function CardSection({ setCurrentIndex, cardData, visibleCards }) {
             setClickedCards([...clickedCards, index]);
         }
     };
-
     return (
         <div style={{ maxWidth: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Button variant="contained" onClick={handleLeftClick} sx={{ background: 'none', boxShadow: 'none', maxHeight: '50px', '&:hover': { background: 'none', boxShadow: 'none' } }}>
                     <img src="https://www.ediya.com/images/common/new_btn_arrow01.gif" alt="left" />
                 </Button>
-                {visibleCards.map((card, index) => (
+                {visibleCards.slice(currentIndex, currentIndex + 3).map((card, index) => (
                     <Card key={index} sx={{ maxWidth: 393, minWidth: 325, boxShadow: 'none', background: 'none', marginRight: '1rem'}} >
                         <CardMedia sx={{ height: 0, paddingTop: '100%', width: '100%' }} image={card.image} />
                         <CardContent sx={{ textAlign: 'center', color: '#464646' }} className={'menu_tt'}>
@@ -50,10 +51,10 @@ function CardSection({ setCurrentIndex, cardData, visibleCards }) {
             </div>
             <br />
             <br />
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', width: 1200}}>
                 {cardData.map((card, index) => (
                     <Card key={index} sx={{ maxWidth: 393, minWidth: 275, boxShadow: 'none', background: '#f5f5f5', margin: 0.5}} onClick={() => handleCardClick(index)}>
-                        <CardContent sx={{ height: 355,  width: 200, margin: 0.5, textAlign: 'center', color: '#464646', display: clickedCards.includes(index) ? 'block' : 'none'}} className={'menu_tt'}>
+                        <CardContent sx={{ height: 355, width: 200, margin: 0.5, textAlign: 'center', color: '#464646', display: clickedCards.includes(index) ? 'block' : 'none', opacity: clickedCards.includes(index) ? 1 : 0.5 }} className={'menu_tt'}>
                             <Typography gutterBottom variant="p" component="div" className={'spans'}>
                                 {card.detail}
                             </Typography>

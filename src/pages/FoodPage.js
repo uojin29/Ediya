@@ -6,12 +6,12 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import { styled } from '@mui/material/styles';
 import { useNavigate } from "react-router-dom";
 import Header from "../component/Header";
+import Footer from "../component/Footer";
 import Foods from "../component/Foods";
 
 const CustomButton = styled(Button)(({ theme }) => ({
   color: '#84847c;',
   borderColor: 'white',
-
   '&:hover': {
     color: '#84847c;',
     borderColor: 'white',
@@ -95,6 +95,7 @@ function FoodPage() {
         <div>
             <Foods/>
         </div>
+        <Footer/>
     </div>
   );
 }

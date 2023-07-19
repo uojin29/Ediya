@@ -14,3 +14,8 @@ a.gift_btn {
     height: 35px;
     line-height: 1.2em;
 }
+.center-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Optional: Adjust the margin-top to create some space between the cards and the button */
+}

@@ -1,0 +1,18 @@
+footer {
+    display: block;
+}
+footer {
+    position: relative;
+    clear: both;
+    width: 100%;
+    background: #262626;
+    text-align: center;
+}
+footer .copy_info {
+    width: 90%;
+    max-width: 650px;
+    margin: auto;
+    margin-bottom: 14px;
+    font-size: 12px;
+    color: #6c6c6c;
+}

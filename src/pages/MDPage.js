@@ -7,6 +7,7 @@ import { styled } from '@mui/material/styles';
 import { useNavigate } from "react-router-dom";
 import Header from "../component/Header";
 import MDs from "../component/MDs";
+import Footer from "../component/Footer";
 
 const CustomButton = styled(Button)(({ theme }) => ({
   color: '#84847c;',
@@ -95,6 +96,7 @@ function MDPage() {
         <div>
             <MDs/>
         </div>
+        <Footer/>
     </div>
   );
 }
