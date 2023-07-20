@@ -19,3 +19,12 @@ a.gift_btn {
     justify-content: center;
     margin-top: 20px; /* Optional: Adjust the margin-top to create some space between the cards and the button */
 }
+.modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 400px;
+    width: 300px;
+    background: lightgray;
+    transform: translate(-50%, -50%);
+}
