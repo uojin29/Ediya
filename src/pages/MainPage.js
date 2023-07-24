@@ -78,8 +78,6 @@ function MainPage() {
                 <h3 className="nunito">추천상품</h3>
             </div>
         </div>
-      </div>
-      <div>
         <Drinks/>
       </div>
         <Footer/>
