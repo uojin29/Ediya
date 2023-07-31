@@ -4,6 +4,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
+import Edit from "./Edit";
 
 function CardSection({ cardData, visibleCards }) {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -29,6 +30,16 @@ function CardSection({ cardData, visibleCards }) {
             setClickedCards([...clickedCards, index]);
         }
     };
+    const [modalOpen, setModalOpen] = useState(false);
+    const showModal = () => {
+        setModalOpen(true);
+    };
+    const [selectedCardIndex, setSelectedCardIndex] = useState(null);
+
+    const handleEditClick = (index) => {
+        setSelectedCardIndex(index); // 선택한 카드의 인덱스를 저장
+        showModal();
+    };
     return (
         <div style={{ maxWidth: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -37,7 +48,7 @@ function CardSection({ cardData, visibleCards }) {
                 </Button>
                 {visibleCards.slice(currentIndex, currentIndex + 3).map((card, index) => (
                     <Card key={index} sx={{ maxWidth: 393, minWidth: 325, boxShadow: 'none', background: 'none', marginRight: '1rem'}} >
-                        <CardMedia sx={{ height: 0, paddingTop: '100%', width: '100%' }} image={card.image} />
+                        <CardMedia sx={{ height: 0, paddingTop: '100%', width: '100%' }} image={card.imgLink} />
                         <CardContent sx={{ textAlign: 'center', color: '#464646' }} className={'menu_tt'}>
                             <Typography gutterBottom variant="p" component="div" className={'spans'}>
                                 {card.title}
@@ -57,19 +68,29 @@ function CardSection({ cardData, visibleCards }) {
                         <CardContent sx={{ textAlign: 'center', height: 355, width: 200, margin: 0.5, color: '#464646', display: clickedCards.includes(index) ? 'block' : 'none',
                             opacity: clickedCards.includes(index) ? 1 : 0.5 }} className={'menu_tt'}>
                             <Typography gutterBottom variant="p" component="div" >
-                                {card.title}
+                                {card.name}
                                 <hr/>
                                 {card.detail}
                             </Typography>
-                            <Button>
+                            <Button onClick={() => handleEditClick(index)}>
                                 수정하기
                             </Button>
                         </CardContent>
+                        {modalOpen && (
+                            <div className={"modal"}>
+                                <Edit
+                                    setModalOpen={setModalOpen}
+                                    cardData={
+                                        selectedCardIndex !== null ? cardData[selectedCardIndex] : null
+                                    }
+                                />
+                            </div>
+                        )}
                         <div style={{ display: clickedCards.includes(index) ? 'none' : 'block'}}>
-                            <CardMedia sx={{ height: 0, paddingTop: '100%', width: '100%', ':hover': { transform: 'scale(1.05)' } }} image={card.image} />
+                            <CardMedia sx={{ height: 0, paddingTop: '100%', width: '100%', ':hover': { transform: 'scale(1.05)' } }} image={card.imgLink} />
                             <CardContent sx={{ textAlign: 'center', color: '#464646' }} className={'menu_tt'}>
                                 <Typography gutterBottom variant="p" component="div">
-                                    {card.title}
+                                    {card.name}
                                 </Typography>
                                 {card.giftLink && (
                                     <a href={card.giftLink} target="_blank" className="gift_btn" style={{ textDecoration: 'none' }}>
@@ -78,7 +99,6 @@ function CardSection({ cardData, visibleCards }) {
                                 )}
                             </CardContent>
                         </div>
-
                     </Card>
                 ))}
             </div>
