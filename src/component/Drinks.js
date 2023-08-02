@@ -72,7 +72,7 @@ function Drinks() {
     //         giftLink: 'https://brand.naver.com/ediyagift/products/7791285331',
     //         detail: '부드러운 크림과 에스프레소, 너티 플레이버가 어우러져 만들어진 완벽한 한 잔의 라떼'
     //     }
-    //
+    //sss
     // ];
     const [modalOpen, setModalOpen] = useState(false);
     const showModal = () => {
