@@ -65,7 +65,6 @@ function Add({ setModalOpen }) {
 
     async function save(event) {
         await axios.post(baseUrl + `/menu/create`, {
-            withCredentials: true,
             name: name,
 
             imgLink: imgLink,
@@ -73,6 +72,8 @@ function Add({ setModalOpen }) {
             detail: detail,
 
             giftLink: giftLink,
+        },{
+            withCredentials: true
         });
         alert("새로운 상품을 추가했습니다!");
         window.location.reload("/menu");
