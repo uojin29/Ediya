@@ -34,6 +34,7 @@ function Add({ setModalOpen }) {
         region: 'ap-northeast-2'
     });
 
+
     const myBucket = new AWS.S3({
         params: { Bucket: S3_BUCKET },
         region: REGION,
