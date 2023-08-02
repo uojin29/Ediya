@@ -8,7 +8,7 @@ const baseUrl = `http://localhost:8080`;
 
 const REGION = "ap-northeast-2";
 const S3_BUCKET = "ediyaimg";
-
+// require('dotenv').config();
 function Add({ setModalOpen }) {
     const closeModal = () => {
         setModalOpen(false);
@@ -29,8 +29,8 @@ function Add({ setModalOpen }) {
     const AWS = require('aws-sdk');
 
     AWS.config.update({
-        accessKeyId: 'AKIA3ZKVKUTIDF3LG75N',
-        secretAccessKey: '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',
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
         region: 'ap-northeast-2'
     });
 
