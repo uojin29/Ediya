@@ -65,6 +65,7 @@ function Add({ setModalOpen }) {
 
     async function save(event) {
         await axios.post(baseUrl + `/menu/create`, {
+            withCredentials: true,
             name: name,
 
             imgLink: imgLink,
