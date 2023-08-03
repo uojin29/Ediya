@@ -25,6 +25,7 @@ a.gift_btn {
     left: 50%;
     height: 400px;
     width: 300px;
-    background: lightgray;
+    background: #f5f5f5;
+    border: 2px solid lightgrey;
     transform: translate(-50%, -50%);
 }

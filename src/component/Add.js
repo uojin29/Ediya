@@ -1,9 +1,8 @@
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
+import Textarea from '@mui/joy/Textarea';
 import Button from "@mui/material/Button";
 import axios from "axios";
 import { useState } from "react";
-import AWS from "aws-sdk";
 const baseUrl = `http://localhost:8080`;
 
 const REGION = "ap-northeast-2";
@@ -50,10 +49,7 @@ function Add({ setModalOpen }) {
         myBucket
             .putObject(params)
             .on("httpUploadProgress", (evt) => {
-                //   setProgress(Math.round((evt.loaded / evt.total) * 100))
-                //   setShowAlert(true);
                 setTimeout(() => {
-                    // setShowAlert(false);
                     setSelectedFile(null);
                 }, 3000);
             })
@@ -66,15 +62,14 @@ function Add({ setModalOpen }) {
     async function save(event) {
         await axios.post(baseUrl + `/menu/create`, {
             name: name,
-
             imgLink: imgLink,
-
             detail: detail,
-
             giftLink: giftLink,
-        },{
-            withCredentials: true
-        });
+        }
+        // ,{
+        //     withCredentials: true
+        // }
+        );
         alert("새로운 상품을 추가했습니다!");
         window.location.reload("/menu");
         setModalOpen(false);
@@ -109,7 +104,6 @@ function Add({ setModalOpen }) {
                     {/*<img style={{ width: "50px", height: "30px" }} src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3vPBRhfTywuwJGnpnUj-jesurCPI7Cw-L_w&usqp=CAU"} alt="url" />*/}
 
                     <input
-
                         label="이미지 링크"
                         id="ex_file"
                         color="primary"
@@ -127,26 +121,26 @@ function Add({ setModalOpen }) {
                             handleFileInput(event);
                         }}
                     />
-                    <TextField
-                        id="standard-basic"
-                        name="name"
-                        label="상품명"
-                        variant="standard"
-                        onChange={(event) => setName(event.target.value)}
+                    <Textarea id="standard-basic"
+                              name="name"
+                              placeholder="상품명"
+                              // variant="standard"
+                              onChange={(event) => setName(event.target.value)}
+                             variant="outlined"
                     />
-                    <TextField
-                        id="standard-basic"
-                        name="detail"
-                        label="상품 설명"
-                        variant="standard"
-                        onChange={(event) => setDetail(event.target.value)}
+                    <Textarea id="standard-basic"
+                              name="detail"
+                              placeholder="상품 설명"
+                              // variant="standard"
+                              onChange={(event) => setDetail(event.target.value)}
+                              variant="outlined"
                     />
-                    <TextField
-                        id="standard-basic"
-                        name="giftLink"
-                        label="선물하기 링크"
-                        variant="standard"
-                        onChange={(event) => setGiftLink(event.target.value)}
+                    <Textarea id="standard-basic"
+                              name="giftLink"
+                              placeholder="선물하기 링크"
+                              // variant="standard"
+                              onChange={(event) => setGiftLink(event.target.value)}
+                              variant="outlined"
                     />
                 </Box>
             </form>
