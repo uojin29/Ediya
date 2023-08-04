@@ -4,7 +4,7 @@ import Textarea from "@mui/joy/Textarea";
 import {useState} from "react";
 import axios from "axios";
 
-const baseUrl = `http://localhost:8080`;
+const baseUrl = `http://3.35.253.47:8080`;
 const AWS = require('aws-sdk');
 const REGION = "ap-northeast-2";
 const S3_BUCKET = "ediyaimg";
@@ -96,7 +96,6 @@ function Edit({ setModalOpen, cardData }) {
                 <Button size={"small"} sx={{ color: "black", fontSize: "12px", padding: "4px", width: "10px"}} onClick={closeModal}>X</Button>
             </div>
             <form onSubmit={(event) => save(event)}>
-
                 <Box
                     component="form"
                     sx={{

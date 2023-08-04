@@ -9,7 +9,7 @@ function Drinks() {
     const [cardData, setCardData] = React.useState([]);
 
     const loadData = async () => {
-        const response = await axios.post(`http://localhost:8080/menu/list`);
+        const response = await axios.post(`http://3.35.253.47:8080/menu/list`);
         console.log(response);
         setCardData(response.data);
     };

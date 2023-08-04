@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import { useState } from "react";
 
-const baseUrl = `http://localhost:8080`;
+const baseUrl = `http://3.35.253.47:8080`;
 const AWS = require('aws-sdk');
 const REGION = "ap-northeast-2";
 const S3_BUCKET = "ediyaimg";
