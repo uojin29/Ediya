@@ -3,11 +3,12 @@ import Textarea from '@mui/joy/Textarea';
 import Button from "@mui/material/Button";
 import axios from "axios";
 import { useState } from "react";
-const baseUrl = `http://localhost:8080`;
 
+const baseUrl = `http://localhost:8080`;
+const AWS = require('aws-sdk');
 const REGION = "ap-northeast-2";
 const S3_BUCKET = "ediyaimg";
-// require('dotenv').config();
+
 function Add({ setModalOpen }) {
     const closeModal = () => {
         setModalOpen(false);
@@ -23,16 +24,21 @@ function Add({ setModalOpen }) {
 
     const handleFileInput = (e) => {
         setSelectedFile(e.target.files[0]);
+        setImgLink(
+            "https://" +
+            S3_BUCKET +
+            ".s3." +
+            REGION +
+            ".amazonaws.com/" +
+            e.target.files[0].name
+        );
     };
 
-    const AWS = require('aws-sdk');
-
     AWS.config.update({
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+        accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+        secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
         region: 'ap-northeast-2'
     });
-
 
     const myBucket = new AWS.S3({
         params: { Bucket: S3_BUCKET },
@@ -59,16 +65,25 @@ function Add({ setModalOpen }) {
 
     };
 
-    async function save(event) {
-        await axios.post(baseUrl + `/menu/create`, {
-            name: name,
-            imgLink: imgLink,
-            detail: detail,
-            giftLink: giftLink,
+    const handleSave = async () => {
+        if (selectedFile) {
+            await uploadFile(selectedFile);
         }
-        // ,{
-        //     withCredentials: true
-        // }
+
+        await save();
+        setModalOpen(false);
+    };
+
+    async function save() {
+        await axios.post(baseUrl + `/menu/create`, {
+                name: name,
+                imgLink: imgLink,
+                detail: detail,
+                giftLink: giftLink,
+            }
+            // ,{
+            //     withCredentials: true
+            // }
         );
         alert("새로운 상품을 추가했습니다!");
         window.location.reload("/menu");
@@ -100,45 +115,29 @@ function Add({ setModalOpen }) {
                     noValidate
                     autoComplete="off"
                 >
-                    {/*<Input type="file" label="이미지 링크" name="imgLink" onChange={(event)=>setImgLink(event.target.value)}/>*/}
-                    {/*<img style={{ width: "50px", height: "30px" }} src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3vPBRhfTywuwJGnpnUj-jesurCPI7Cw-L_w&usqp=CAU"} alt="url" />*/}
-
                     <input
                         label="이미지 링크"
                         id="ex_file"
                         color="primary"
                         type="file"
                         accept="image/*"
-                        onChange={(event) => {
-                            setImgLink(
-                                "https://" +
-                                S3_BUCKET +
-                                ".s3." +
-                                REGION +
-                                ".amazonaws.com/" +
-                                document.getElementById("ex_file").files[0].name
-                            );
-                            handleFileInput(event);
-                        }}
+                        onChange={handleFileInput}
                     />
                     <Textarea id="standard-basic"
                               name="name"
                               placeholder="상품명"
-                              // variant="standard"
                               onChange={(event) => setName(event.target.value)}
-                             variant="outlined"
+                              variant="outlined"
                     />
                     <Textarea id="standard-basic"
                               name="detail"
                               placeholder="상품 설명"
-                              // variant="standard"
                               onChange={(event) => setDetail(event.target.value)}
                               variant="outlined"
                     />
                     <Textarea id="standard-basic"
                               name="giftLink"
                               placeholder="선물하기 링크"
-                              // variant="standard"
                               onChange={(event) => setGiftLink(event.target.value)}
                               variant="outlined"
                     />
@@ -149,10 +148,7 @@ function Add({ setModalOpen }) {
                     size={"small"}
                     type={"submit"}
                     sx={{ color: "black", padding: "4px", width: "10px" }}
-                    onClick={(event) => {
-                        uploadFile(selectedFile);
-                        save(event);
-                    }}
+                    onClick={handleSave}
                 >
                     저장하기
                 </Button>
@@ -160,4 +156,5 @@ function Add({ setModalOpen }) {
         </div>
     );
 }
+
 export default Add;
