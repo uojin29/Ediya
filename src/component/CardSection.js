@@ -43,7 +43,7 @@ function CardSection({ cardData, visibleCards, setCardData }) {
         showModal();
     };
 
-    const baseUrl = `http://localhost:8080`;
+    const baseUrl = `http://3.35.253.47:8080`;
 
     async function deleteMenu(index) {
         await axios.delete(
