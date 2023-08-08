@@ -78,7 +78,7 @@ function CardSection({ cardData, visibleCards, setCardData }) {
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', width: 1200}}>
                 {cardData.map((card, index) => (
                     <Card key={index} sx={{ maxWidth: 393, minWidth: 275, boxShadow: 'none', background: '#f5f5f5', margin: 0.5}} onClick={() => handleCardClick(index)}>
-                        <CardContent sx={{ textAlign: 'center', height: 355,  margin: 0.5, color: '#464646', display: clickedCards.includes(index) ? 'block' : 'none', opacity: clickedCards.includes(index) ? 1 : 0.5 }} className={'menu_tt'}>
+                        <CardContent sx={{ width: 230,textAlign: 'center', height: 355,  margin: 0.5, color: '#464646', display: clickedCards.includes(index) ? 'block' : 'none', opacity: clickedCards.includes(index) ? 1 : 0.5 }} className={'menu_tt'}>
                             <Typography gutterBottom variant="p" component="div" >
                                 {card.name}
                                 <hr />
